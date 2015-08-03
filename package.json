@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-elasticsearch-jd",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A set of Node-RED nodes for Elasticsearch including search, get, exists, create, update and delete.",
   "author": {
     "name": "Jeff Douglas",
