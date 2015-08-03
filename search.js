@@ -35,6 +35,8 @@ module.exports = function(RED) {
           }
       }
 
+      node.log(JSON.stringify(params));      
+
       client.search(params).then(function (resp) {
         msg.payload = resp.hits;
         node.send(msg);
