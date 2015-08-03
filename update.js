@@ -11,22 +11,25 @@ module.exports = function(RED) {
       var client = new elasticsearch.Client({
           host: this.server.host
       });
+      var documentId = config.documentId;
+      var documentIndex = config.documentIndex;
+      var documentType = config.documentType;
 
       // check for overriding message properties
       if (msg.hasOwnProperty("documentId")) {
-        config.documentId = msg.documentId;
+        documentId = msg.documentId;
       }
       if (msg.hasOwnProperty("documentIndex")) {
-        config.documentIndex = msg.documentIndex;
+        documentIndex = msg.documentIndex;
       }
       if (msg.hasOwnProperty("documentType")) {
-        config.documentType = msg.documentType;
+        documentType = msg.documentType;
       }
 
       var params = {
-        index: config.documentIndex,
-        type: config.documentType,
-        id: config.documentId,
+        index: documentIndex,
+        type: documentType,
+        id: documentId,
         body: {
           doc: msg.payload
         }

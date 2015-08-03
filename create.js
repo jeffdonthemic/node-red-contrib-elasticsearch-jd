@@ -11,19 +11,21 @@ module.exports = function(RED) {
       var client = new elasticsearch.Client({
           host: this.server.host
       });
+      var documentIndex = config.documentIndex;
+      var documentType = config.documentType;
 
       // check for overriding message properties
       if (msg.hasOwnProperty("documentIndex")) {
-        config.documentIndex = msg.documentIndex;
+        documentIndex = msg.documentIndex;
       }
       if (msg.hasOwnProperty("documentType")) {
-        config.documentType = msg.documentType;
+        documentType = msg.documentType;
       }
 
       // construct the search params
       var params = {
-        index: config.documentIndex,
-        type: config.documentType,
+        index: documentIndex,
+        type: documentType,
         id: msg.documentId,
         body: msg.payload
       }
