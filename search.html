@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    RED.nodes.registerType('search',{
+        category: 'Elasticsearch',
+        defaults: {
+          name: {value: ''},
+          documentIndex: {value: ''},
+          documentType: {value: ''},
+          query: {value: ''},
+          server: {value:"", type:"remote-server"}
+        },
+        color:'#C0DEED',
+        inputs:1,
+        outputs:1,
+        icon: 'elasticsearch.png',
+        label: function() {
+          return this.name || 'search';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="search">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-query"><i class="icon-random"></i> Query</label>
+        <input type="text" id="node-input-query" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-index"><i class="icon-book"></i> Index</label>
+        <input type="text" id="node-input-documentIndex" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-documentType"><i class="fa fa-cube"></i> Type</label>
+        <input type="text" id="node-input-documentType" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-plug"></i> Server</label>
+        <input type="text" id="node-input-server" />
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="search">
+    <p>Search with a simple query string query.</p>
+    <p>The index, type and query can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.documentIndex</code> - the index to use</li><li><code>msg.documentType</code> - the type to use</li><li><code>msg.query</code> - the query string to use</li></ul></p>
+    <p>See the <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-search" target="_blank">Elasticsearch documentation</a> for more information.</p>
+</script>

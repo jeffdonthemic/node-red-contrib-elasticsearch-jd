@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('update',{
+        category: 'Elasticsearch',
+        defaults: {
+          name: {value: ''},
+          documentId: {value: ''},
+          documentIndex: {value: ''},
+          documentType: {value: ''},
+          server: {value:"", type:"remote-server"}
+        },
+        color:'#C0DEED',
+        inputs:1,
+        outputs:1,
+        icon: 'elasticsearch.png',
+        align: 'right',
+        label: function() {
+          return this.name || 'update document';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="update">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-documentId"><i class="fa fa-key"></i> ID</label>
+        <input type="text" id="node-input-documentId" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-index"><i class="icon-book"></i> Index</label>
+        <input type="text" id="node-input-documentIndex" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-documentType"><i class="fa fa-cube"></i> Type</label>
+        <input type="text" id="node-input-documentType" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-plug"></i> Server</label>
+        <input type="text" id="node-input-server" />
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="update">
+    <p>Update parts of a document.</p>
+    <p>The <code>msg.payload</code> will be used for the body to update the document. The id, index and type can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.documentId</code> - the id of the document</li><li><code>msg.documentIndex</code> - the index to use</li><li><code>msg.documentType</code> - the type to use</li></ul></p>
+    <p>See the <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-update" target="_blank">Elasticsearch documentation</a> for more information.</p>
+</script>
