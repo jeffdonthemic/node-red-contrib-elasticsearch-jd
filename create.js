@@ -13,10 +13,10 @@ module.exports = function(RED) {
       });
 
       // check for overriding message properties
-      if (msg.hasOwnProperty("documentIndex") && config.documentIndex === '') {
+      if (msg.hasOwnProperty("documentIndex")) {
         config.documentIndex = msg.documentIndex;
       }
-      if (msg.hasOwnProperty("documentType") && config.documentType === '') {
+      if (msg.hasOwnProperty("documentType")) {
         config.documentType = msg.documentType;
       }
 

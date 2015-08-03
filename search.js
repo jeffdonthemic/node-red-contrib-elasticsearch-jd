@@ -13,13 +13,13 @@ module.exports = function(RED) {
       });
 
       // check for overriding message properties
-      if (msg.hasOwnProperty("documentIndex") && config.documentIndex === '') {
+      if (msg.hasOwnProperty("documentIndex")) {
         config.documentIndex = msg.documentIndex;
       }
-      if (msg.hasOwnProperty("documentType") && config.documentType === '') {
+      if (msg.hasOwnProperty("documentType")) {
         config.documentType = msg.documentType;
       }
-      if (msg.hasOwnProperty("query") && config.query === '') {
+      if (msg.hasOwnProperty("query")) {
         config.query = msg.query;
       }
 
@@ -35,7 +35,7 @@ module.exports = function(RED) {
           }
       }
 
-      node.log(JSON.stringify(params));      
+      node.log(JSON.stringify(params));
 
       client.search(params).then(function (resp) {
         msg.payload = resp.hits;
