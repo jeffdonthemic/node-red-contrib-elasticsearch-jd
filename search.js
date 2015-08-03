@@ -14,6 +14,9 @@ module.exports = function(RED) {
       var documentIndex = config.documentIndex;
       var documentType = config.documentType;
       var query = config.query;
+      var maxResults = config.maxResults;
+      var sort = config.sort;
+      var includeFields = config.includeFields;
 
       // check for overriding message properties
       if (msg.hasOwnProperty("documentIndex")) {
@@ -25,17 +28,30 @@ module.exports = function(RED) {
       if (msg.hasOwnProperty("query")) {
         query = msg.query;
       }
+      if (msg.hasOwnProperty("maxResults")) {
+        maxResults = msg.maxResults;
+      }
+      if (msg.hasOwnProperty("sort")) {
+        sort = msg.sort;
+      }
+      if (msg.hasOwnProperty("includeFields")) {
+        includeFields = msg.includeFields;
+      }
 
       // construct the search params
-      var params = {}
+      var params = {
+        size: maxResults,
+        sort: sort,
+        _sourceInclude: includeFields
+      };
       if (documentIndex != '') params.index = documentIndex;
       if (documentType != '') params.type = documentType;
       params.body = {
-          query: {
-              query_string:{
-                 query: query
-              }
+        query: {
+          query_string:{
+            query: query
           }
+        }
       }
 
       node.log(JSON.stringify(params));

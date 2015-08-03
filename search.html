@@ -6,6 +6,9 @@
           documentIndex: {value: ''},
           documentType: {value: ''},
           query: {value: ''},
+          sort: {value: ''},
+          includeFields: {value: ''},
+          maxResults: {value: 10, required: true, validate: RED.validators.number()},
           server: {value:"", type:"remote-server"}
         },
         color:'#C0DEED',
@@ -28,6 +31,18 @@
         <input type="text" id="node-input-query" />
     </div>
     <div class="form-row">
+        <label for="node-input-includeFields"><i class="fa fa-bars"></i> Return Fields</label>
+        <input type="text" id="node-input-includeFields" placeholder="Leave blank for all" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxResults"><i class="fa fa-bars"></i> Max Results</label>
+        <input type="text" id="node-input-maxResults" placeholder="10" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-sort"><i class="fa fa-sort"></i> Sort</label>
+        <input type="text" id="node-input-sort" placeholder="Leave blank to sort by score" />
+    </div>
+    <div class="form-row">
         <label for="node-input-index"><i class="icon-book"></i> Index</label>
         <input type="text" id="node-input-documentIndex" />
     </div>
@@ -35,14 +50,10 @@
         <label for="node-input-documentType"><i class="fa fa-cube"></i> Type</label>
         <input type="text" id="node-input-documentType" />
     </div>
-    <div class="form-row">
-        <label for="node-input-server"><i class="fa fa-plug"></i> Server</label>
-        <input type="text" id="node-input-server" />
-    </div>
 </script>
 
 <script type="text/x-red" data-help-name="search">
     <p>Search with a simple query string query.</p>
-    <p>The index, type and query can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.documentIndex</code> - the index to use</li><li><code>msg.documentType</code> - the type to use</li><li><code>msg.query</code> - the query string to use</li></ul></p>
+    <p>The index, type, query, includeFields, sort and max results returned can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.documentIndex</code> - the index to use</li><li><code>msg.documentType</code> - the type to use</li><li><code>msg.query</code> - the query string to use</li><li><code>msg.includeFields</code> - A comma separated list of fields to extract and return from the _source field. If left blank, returns all fields.</li><li><code>msg.sort</code> - the direction to sort the results. Enter a comma-separated list of field:direction pairs. Leave blank to sort by score.</li><li><code>msg.maxResults</code> - the maximum number of results to be returned from the query. Default is 10.</li></ul></p>
     <p>See the <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-search">Elasticsearch documentation</a> for more information.</p>
 </script>
