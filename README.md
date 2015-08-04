@@ -43,7 +43,7 @@ npm install node-red-contrib-elasticsearch-jd
 ### Search
 
 <p>Search with a simple query string query.</p>
-<p>The index, type and query can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.documentIndex</code> - the index to use</li><li><code>msg.documentType</code> - the type to use</li><li><code>msg.query</code> - the query string to use</li></ul></p>
+<p>The index, type, query, includeFields, sort and max results returned can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.documentIndex</code> - the index to use</li><li><code>msg.documentType</code> - the type to use</li><li><code>msg.query</code> - the query string to use</li><li><code>msg.includeFields</code> - A comma separated list of fields to extract and return from the _source field. If left blank, returns all fields.</li><li><code>msg.sort</code> - the direction to sort the results. Enter a comma-separated list of field:direction pairs. Leave blank to sort by score.</li><li><code>msg.maxResults</code> - the maximum number of results to be returned from the query. Default is 10.</li></ul></p>
 <p>See the <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-search">Elasticsearch documentation</a> for more information.</p>
 
 ### Update
