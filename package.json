@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-elasticsearch-jd",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A set of Node-RED nodes for Elasticsearch including search, get, exists, create, update and delete.",
   "author": {
     "name": "Jeff Douglas",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jeffdonthemic/node-red-contrib-elasticsearch.git"
+    "url": "git://github.com/jeffdonthemic/node-red-contrib-elasticsearch-jd.git"
   },
   "keywords": [
     "node-red",
