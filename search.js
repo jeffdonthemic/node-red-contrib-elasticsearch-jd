@@ -9,7 +9,7 @@ module.exports = function(RED) {
     this.on('input', function(msg) {
 
       var client = new elasticsearch.Client({
-          host: this.server.host
+          host: {'host':this.server.host,'port':this.server.port}
       });
       var documentIndex = config.documentIndex;
       var documentType = config.documentType;
