@@ -24,7 +24,6 @@
       "get": "get.js",
       "bulk": "bulk.js",
       "remote-server": "remote-server.js"
-
     }
   },
   "license": "MIT",
