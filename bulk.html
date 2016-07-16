@@ -1,0 +1,77 @@
+<script type="text/javascript">
+    RED.nodes.registerType('bulk',{
+        category: 'Elasticsearch',
+        defaults: {
+          documentIndex: {value: ''},
+          documentType: {value: ''},
+          bulkSize: { value:"1000", validate:RED.validators.number(), required: true },
+          server: { value:"", type:"remote-server" },
+          name: { value: "" }
+        },
+        color:'#C0DEED',
+        inputs:1,
+        outputs:1,
+        icon: 'elasticsearch.png',
+        align: 'right',
+        label: function() {
+          return this.name || 'bulk operation';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="bulk">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-plug"></i> Server</label>
+        <input type="text" id="node-input-server" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-index"><i class="icon-book"></i> Index</label>
+        <input type="text" id="node-input-documentIndex" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-documentType"><i class="fa fa-cube"></i> Type</label>
+        <input type="text" id="node-input-documentType" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-size">Bulk size</label>
+        <input type="text" id="node-input-bulkSize" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-tips">
+      <p>
+        Note: This node requires both <code>msg.payload</code> <bold>and</bold> 
+        <code>msg.action</code>, see info tab for more details.</code>.
+      </p>
+      <p>
+        Index and type can be configured here, or set in each message as
+        <code>msg.action.[action]._index</code> and <code>msg.action.[action]._type</code>
+      </p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="bulk">
+    <p>Creates, updates or deletes documents using in ElasticSearch using the bulk API</p>
+    <p>The (maximum) size of a bulk request is set by the bulk size parameter.</p>
+    <p>Example payload:</p>
+<pre><code>{
+  action: {
+    index: {
+      _index: "someindex",
+      _type: "sometype"
+      _id: 42
+    }
+  },
+  payload: {
+    aString: "abc123",
+    aNumber: 499
+  }
+}
+</code></pre>
+    <p>The keys _index and _type <bold>must</bold> be present, if not set in the node config</>
+    <p>Node status shows the number of buffered, successful and buffered items.</p>
+    
+    <p>See the <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html">Elasticsearch documentation</a> for more information.</p>
+</script>

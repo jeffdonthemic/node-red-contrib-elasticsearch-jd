@@ -22,7 +22,9 @@
       "update": "update.js",
       "delete": "delete.js",
       "get": "get.js",
+      "bulk": "bulk.js",
       "remote-server": "remote-server.js"
+
     }
   },
   "license": "MIT",
