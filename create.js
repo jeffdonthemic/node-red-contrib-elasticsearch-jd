@@ -27,6 +27,7 @@ module.exports = function(RED) {
         index: documentIndex,
         type: documentType,
         id: msg.documentId,
+        refresh: msg.refresh,
         body: msg.payload
       }
 
