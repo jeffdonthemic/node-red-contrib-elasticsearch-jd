@@ -30,7 +30,8 @@ module.exports = function(RED) {
       var params = {
         index: documentIndex,
         type: documentType,
-        id: documentId
+        id: documentId,
+        refresh: msg.refresh
       }
 
       client.delete(params).then(function (resp) {
