@@ -30,6 +30,7 @@ module.exports = function(RED) {
         index: documentIndex,
         type: documentType,
         id: documentId,
+        refresh: msg.refresh,
         body: {
           doc: msg.payload
         }
