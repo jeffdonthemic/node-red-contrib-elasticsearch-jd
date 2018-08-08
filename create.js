@@ -30,7 +30,7 @@ module.exports = function(RED) {
         body: msg.payload
       }
 
-      client.create(params).then(function (resp) {
+      client.index(params).then(function (resp) {
         msg.payload = resp;
         node.send(msg);
       }, function (err) {
